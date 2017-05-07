@@ -10,6 +10,11 @@ namespace _572017
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Please state the words that are embedded.");
+            string words = Console.ReadLine();
+            words = words.Replace(" ", String.Empty);
+            Console.WriteLine(words);
+            Console.ReadLine();
         }
     }
 }
