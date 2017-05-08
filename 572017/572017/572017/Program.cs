@@ -10,11 +10,75 @@ namespace _572017
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Please state the words that are embedded.");
+            Console.WriteLine("Please state the words that are embedded - seperate each word with a comma");
             string words = Console.ReadLine();
-            words = words.Replace(" ", String.Empty);
-            Console.WriteLine(words);
+            words = words.Replace(" ", String.Empty); //removes spaces 
+            List<string> split = new List<string>(
+                 words.Split(new string[] { "," }, StringSplitOptions.None)); //split the string into a list.
+            string alphabet = "";
+            int i = 0;
+            int count = 3;
+            int max = 0;
+            int l = 0;
+            int r = 0;
+            string combined = "";
+            while(r != split.Count){
+                combined = combined + split[r];
+                r++;
+            }
+            while (l < split.Count) //finds the length of the biggest string
+            {
+                if(split[l].Length > max)
+                {
+                    max = split[l].Length;
+                    l++;
+
+                }
+                else
+                {
+                    l++;
+                }
+            }
+            Console.WriteLine(max);
             Console.ReadLine();
+            count = max * split.Count;
+            while (i != count)
+            {
+                alphabet = alphabet + "abcdefghijklmnopqrstuvwxyz";  //makes a stupid long supersequence
+                i++;
+            }
+            int combinedLength = combined.Length;
+            int alphabetRed = 0;
+            int combinedRed = 0;
+            bool found = false;
+            while(alphabetRed != alphabet.Length)
+            {
+                if(combinedRed != combinedLength)
+                {
+                    if (alphabet[alphabetRed] == combined[combinedRed])
+                    {
+                        combinedRed = 0;
+                        alphabetRed++;
+                        Console.WriteLine("aint shit found");
+                    }
+                    else 
+                    {
+                        combinedRed++;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Found!" + alphabet[alphabetRed]);
+                    alphabet = alphabet.Replace(alphabet[alphabetRed].ToString(), String.Empty);
+                    combinedRed = 0;
+                    
+                }
+            }
+            Console.WriteLine(alphabet);
+            Console.ReadLine();
+            
+            
         }
     }
 }
