@@ -48,10 +48,22 @@ namespace _572017
                 i++;
             }
             int combinedLength = combined.Length;
+            alphabet = removeRed(alphabet, combined, combinedLength);
+
+            
+            Console.WriteLine(alphabet);
+            Console.ReadLine();
+            
+            
+        }
+
+
+        public static string removeRed(string alphabet, string combined, int combinedLength)
+        {
             int alphabetRed = 0;
             int combinedRed = 0;
-            bool found = false;
-            while(alphabetRed != alphabet.Length)
+
+            while (alphabetRed != alphabet.Length)
             {
                 if(combinedRed != combinedLength)
                 {
@@ -75,10 +87,8 @@ namespace _572017
                     
                 }
             }
-            Console.WriteLine(alphabet);
-            Console.ReadLine();
-            
-            
+            return alphabet;
         }
+
     }
 }
