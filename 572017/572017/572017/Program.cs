@@ -39,18 +39,58 @@ namespace _572017
                 }
             }
             count = max * split.Count;
-            makeSequence(alphabet, count); //makes a stupid long supersequence
+            alphabet = makeSequence(alphabet, count); //makes a stupid long supersequence
 
             int combinedLength = combined.Length;
-            alphabet = removeRed(alphabet, combined, combinedLength);
-
+            alphabet = removeRed(alphabet, combined, combinedLength); //removes redundencys
+            finalize(alphabet, split);
             
             Console.WriteLine(alphabet);
             Console.ReadLine();
             
             
         }
+        public static string finalize(string alphabet, List<string> split)
+        {
+            bool firstRemoved = false;
+            int i = 0;
+            int u = 0;
+            int p = 0;
+            string combinedFirst = "";
+            while(u != split.Count)
+            {
+                string ugh = split[u];   //gets the first letter of every string in the list
+                combinedFirst = combinedFirst + ugh[0];
+                u++;
+            }
+            int firstLength = combinedFirst.Length;
+            while(firstRemoved == false)
+            {
+                while(p != firstLength + 1)
+                {
+                    if(alphabet[i] == combinedFirst[p])
+                    {
+                        firstRemoved = true;
+                    }
+                    else
+                    {
+                        p++;
+                    }
+                }
+                if(p == firstLength + 1)
+                {
+                    Console.WriteLine("Removed : " + alphabet[i]);
+                    alphabet = alphabet.Remove(i);
+                    Console.WriteLine("New: " + alphabet[i]);
+                    p = 0;
+                    
+                }
+            }
+            
 
+
+            return alphabet;
+        }
 
         public static string removeRed(string alphabet, string combined, int combinedLength)
         {
