@@ -16,14 +16,13 @@ namespace _572017
             List<string> split = new List<string>(
                  words.Split(new string[] { "," }, StringSplitOptions.None)); //split the string into a list.
             string alphabet = "";
-            int i = 0;
             int count = 3;
             int max = 0;
             int l = 0;
             int r = 0;
             string combined = "";
             while(r != split.Count){
-                combined = combined + split[r];
+                combined = combined + split[r]; //combines all the strings for comparison
                 r++;
             }
             while (l < split.Count) //finds the length of the biggest string
@@ -39,14 +38,9 @@ namespace _572017
                     l++;
                 }
             }
-            Console.WriteLine(max);
-            Console.ReadLine();
             count = max * split.Count;
-            while (i != count)
-            {
-                alphabet = alphabet + "abcdefghijklmnopqrstuvwxyz";  //makes a stupid long supersequence
-                i++;
-            }
+            makeSequence(alphabet, count); //makes a stupid long supersequence
+
             int combinedLength = combined.Length;
             alphabet = removeRed(alphabet, combined, combinedLength);
 
@@ -86,6 +80,16 @@ namespace _572017
                     combinedRed = 0;
                     
                 }
+            }
+            return alphabet;
+        }
+        public static string makeSequence(string alphabet, int count)
+        {
+            int i = 0;
+            while (i != count)
+            {
+                alphabet = alphabet + "abcdefghijklmnopqrstuvwxyz";  
+                i++;
             }
             return alphabet;
         }
