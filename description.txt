@@ -1,0 +1,1 @@
+live timer that tells you how much money you have made. 
